@@ -1,0 +1,11 @@
+br\com\pulse\achievements\listeners\MenuListener.class
+br\com\pulse\achievements\events\PlayerBedBreakListener.class
+br\com\pulse\achievements\events\UpgradeBuyListener.class
+br\com\pulse\achievements\events\PlayerKillListener.class
+br\com\pulse\achievements\events\ShopBuyListener.class
+br\com\pulse\achievements\events\GameEndListener.class
+br\com\pulse\achievements\PulseAchievements.class
+br\com\pulse\achievements\commands\AchievementsCommand.class
+br\com\pulse\achievements\AchievementsManager.class
+br\com\pulse\achievements\menus\AchievementsMenu.class
+br\com\pulse\achievements\events\PlayerFirstSpawnListener.class

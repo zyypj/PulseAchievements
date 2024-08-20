@@ -1,0 +1,232 @@
+achievements:
+  game_win:
+    - name: "Vencedor Iniciante (Tier I)"
+      type: game_win
+      goal: 1
+      material: DIAMOND_SWORD
+      lore:
+        - "§7Ganhe sua primeira partida."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Campeão Ascendente (Tier II)"
+      type: game_win
+      goal: 10
+      material: GOLD_SWORD
+      lore:
+        - "§7Ganhe 10 partidas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Mestre Invicto (Tier III)"
+      type: game_win
+      goal: 100
+      material: IRON_SWORD
+      lore:
+        - "§7Ganhe 100 partidas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  game_defeat:
+    - name: "Sobrevivente (Tier I)"
+      type: game_defeat
+      goal: 1
+      material: WOODEN_SWORD
+      lore:
+        - "§7Perca sua primeira partida."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Resiliente (Tier II)"
+      type: game_defeat
+      goal: 10
+      material: STONE_SWORD
+      lore:
+        - "§7Perca 10 partidas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Implacável (Tier III)"
+      type: game_defeat
+      goal: 100
+      material: IRON_SWORD
+      lore:
+        - "§7Perca 100 partidas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  bed_broken:
+    - name: "Destruidor de Camas (Tier I)"
+      type: bed_broken
+      goal: 1
+      material: BED
+      lore:
+        - "§7Destrua sua primeira cama."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Pesadelo de Camas (Tier II)"
+      type: bed_broken
+      goal: 10
+      material: BED
+      lore:
+        - "§7Destrua 10 camas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Aniquilador de Sonhos (Tier III)"
+      type: bed_broken
+      goal: 100
+      material: BED
+      lore:
+        - "§7Destrua 100 camas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  games_played:
+    - name: "Jogador Novato (Tier I)"
+      type: games_played
+      goal: 1
+      material: BOOK
+      lore:
+        - "§7Jogue sua primeira partida."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Veterano (Tier II)"
+      type: games_played
+      goal: 10
+      material: BOOK
+      lore:
+        - "§7Jogue 10 partidas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Lendário (Tier III)"
+      type: games_played
+      goal: 100
+      material: BOOK
+      lore:
+        - "§7Jogue 100 partidas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  kill:
+    - name: "Assassino Iniciante (Tier I)"
+      type: kill
+      goal: 1
+      material: IRON_SWORD
+      lore:
+        - "§7Faça sua primeira morte."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Caçador Experiente (Tier II)"
+      type: kill
+      goal: 10
+      material: GOLD_SWORD
+      lore:
+        - "§7Faça 10 mortes."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Executor Implacável (Tier III)"
+      type: kill
+      goal: 100
+      material: DIAMOND_SWORD
+      lore:
+        - "§7Faça 100 mortes."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  final_kill:
+    - name: "Executor Final (Tier I)"
+      type: final_kill
+      goal: 1
+      material: IRON_AXE
+      lore:
+        - "§7Faça sua primeira morte final."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Açougueiro (Tier II)"
+      type: final_kill
+      goal: 10
+      material: GOLD_AXE
+      lore:
+        - "§7Faça 10 mortes finais."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Ceifador Supremo (Tier III)"
+      type: final_kill
+      goal: 100
+      material: DIAMOND_AXE
+      lore:
+        - "§7Faça 100 mortes finais."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  shop_buy:
+    - name: "Comprador Cauteloso (Tier I)"
+      type: shop_buy
+      goal: 1
+      material: GOLD_INGOT
+      lore:
+        - "§7Faça sua primeira compra na loja."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Cliente Fiel (Tier II)"
+      type: shop_buy
+      goal: 10
+      material: GOLD_INGOT
+      lore:
+        - "§7Faça 10 compras na loja."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Magnata (Tier III)"
+      type: shop_buy
+      goal: 100
+      material: DIAMOND
+      lore:
+        - "§7Faça 100 compras na loja."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  upgrade_buy:
+    - name: "Iniciante em Melhorias (Tier I)"
+      type: upgrade_buy
+      goal: 1
+      material: ANVIL
+      lore:
+        - "§7Compre sua primeira melhoria."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Especialista em Melhorias (Tier II)"
+      type: upgrade_buy
+      goal: 10
+      material: ANVIL
+      lore:
+        - "§7Compre 10 melhorias."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - name: "Mestre das Melhorias (Tier III)"
+      type: upgrade_buy
+      goal: 100
+      material: ANVIL
+      lore:
+        - "§7Compre 100 melhorias."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
