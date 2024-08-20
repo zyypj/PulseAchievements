@@ -1,7 +1,7 @@
 achievements:
   game_win:
-    - name: "Vencedor Iniciante (Tier I)"
-      type: game_win
+    - tier: 1
+      name: "Vencedor Iniciante (Tier I)"
       goal: 1
       material: DIAMOND_SWORD
       lore:
@@ -9,8 +9,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Campeão Ascendente (Tier II)"
-      type: game_win
+    - tier: 2
+      name: "Campeão Ascendente (Tier II)"
       goal: 10
       material: GOLD_SWORD
       lore:
@@ -18,8 +18,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Mestre Invicto (Tier III)"
-      type: game_win
+    - tier: 3
+      name: "Mestre Invicto (Tier III)"
       goal: 100
       material: IRON_SWORD
       lore:
@@ -29,8 +29,8 @@ achievements:
         - "{status}"
 
   game_defeat:
-    - name: "Sobrevivente (Tier I)"
-      type: game_defeat
+    - tier: 1
+      name: "Sobrevivente (Tier I)"
       goal: 1
       material: WOODEN_SWORD
       lore:
@@ -38,8 +38,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Resiliente (Tier II)"
-      type: game_defeat
+    - tier: 2
+      name: "Resiliente (Tier II)"
       goal: 10
       material: STONE_SWORD
       lore:
@@ -47,8 +47,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Implacável (Tier III)"
-      type: game_defeat
+    - tier: 3
+      name: "Implacável (Tier III)"
       goal: 100
       material: IRON_SWORD
       lore:
@@ -58,8 +58,8 @@ achievements:
         - "{status}"
 
   bed_broken:
-    - name: "Destruidor de Camas (Tier I)"
-      type: bed_broken
+    - tier: 1
+      name: "Destruidor de Camas (Tier I)"
       goal: 1
       material: BED
       lore:
@@ -67,8 +67,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Pesadelo de Camas (Tier II)"
-      type: bed_broken
+    - tier: 2
+      name: "Pesadelo de Camas (Tier II)"
       goal: 10
       material: BED
       lore:
@@ -76,8 +76,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Aniquilador de Sonhos (Tier III)"
-      type: bed_broken
+    - tier: 3
+      name: "Aniquilador de Sonhos (Tier III)"
       goal: 100
       material: BED
       lore:
@@ -87,8 +87,8 @@ achievements:
         - "{status}"
 
   games_played:
-    - name: "Jogador Novato (Tier I)"
-      type: games_played
+    - tier: 1
+      name: "Jogador Novato (Tier I)"
       goal: 1
       material: BOOK
       lore:
@@ -96,8 +96,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Veterano (Tier II)"
-      type: games_played
+    - tier: 2
+      name: "Veterano (Tier II)"
       goal: 10
       material: BOOK
       lore:
@@ -105,8 +105,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Lendário (Tier III)"
-      type: games_played
+    - tier: 3
+      name: "Lendário (Tier III)"
       goal: 100
       material: BOOK
       lore:
@@ -116,8 +116,8 @@ achievements:
         - "{status}"
 
   kill:
-    - name: "Assassino Iniciante (Tier I)"
-      type: kill
+    - tier: 1
+      name: "Assassino Iniciante (Tier I)"
       goal: 1
       material: IRON_SWORD
       lore:
@@ -125,8 +125,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Caçador Experiente (Tier II)"
-      type: kill
+    - tier: 2
+      name: "Caçador Experiente (Tier II)"
       goal: 10
       material: GOLD_SWORD
       lore:
@@ -134,8 +134,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Executor Implacável (Tier III)"
-      type: kill
+    - tier: 3
+      name: "Executor Implacável (Tier III)"
       goal: 100
       material: DIAMOND_SWORD
       lore:
@@ -145,8 +145,8 @@ achievements:
         - "{status}"
 
   final_kill:
-    - name: "Executor Final (Tier I)"
-      type: final_kill
+    - tier: 1
+      name: "Executor Final (Tier I)"
       goal: 1
       material: IRON_AXE
       lore:
@@ -154,8 +154,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Açougueiro (Tier II)"
-      type: final_kill
+    - tier: 2
+      name: "Açougueiro (Tier II)"
       goal: 10
       material: GOLD_AXE
       lore:
@@ -163,8 +163,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Ceifador Supremo (Tier III)"
-      type: final_kill
+    - tier: 3
+      name: "Ceifador Supremo (Tier III)"
       goal: 100
       material: DIAMOND_AXE
       lore:
@@ -174,8 +174,8 @@ achievements:
         - "{status}"
 
   shop_buy:
-    - name: "Comprador Cauteloso (Tier I)"
-      type: shop_buy
+    - tier: 1
+      name: "Comprador Cauteloso (Tier I)"
       goal: 1
       material: GOLD_INGOT
       lore:
@@ -183,8 +183,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Cliente Fiel (Tier II)"
-      type: shop_buy
+    - tier: 2
+      name: "Cliente Fiel (Tier II)"
       goal: 10
       material: GOLD_INGOT
       lore:
@@ -192,8 +192,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Magnata (Tier III)"
-      type: shop_buy
+    - tier: 3
+      name: "Magnata (Tier III)"
       goal: 100
       material: DIAMOND
       lore:
@@ -203,8 +203,8 @@ achievements:
         - "{status}"
 
   upgrade_buy:
-    - name: "Iniciante em Melhorias (Tier I)"
-      type: upgrade_buy
+    - tier: 1
+      name: "Iniciante em Melhorias (Tier I)"
       goal: 1
       material: ANVIL
       lore:
@@ -212,8 +212,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Especialista em Melhorias (Tier II)"
-      type: upgrade_buy
+    - tier: 2
+      name: "Especialista em Melhorias (Tier II)"
       goal: 10
       material: ANVIL
       lore:
@@ -221,8 +221,8 @@ achievements:
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
-    - name: "Mestre das Melhorias (Tier III)"
-      type: upgrade_buy
+    - tier: 3
+      name: "Mestre das Melhorias (Tier III)"
       goal: 100
       material: ANVIL
       lore:

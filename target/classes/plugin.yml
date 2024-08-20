@@ -1,7 +1,0 @@
-name: PulseAchievements
-version: '1.0'
-main: br.com.pulse.achievements.PulseAchievements
-depend: [BedWars2023, PlaceholderAPI]
-commands:
-  achievements:
-    aliases: [conquistas, conquista, achievement]

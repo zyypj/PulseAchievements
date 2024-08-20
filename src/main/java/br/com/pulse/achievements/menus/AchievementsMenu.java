@@ -51,16 +51,7 @@ public class AchievementsMenu {
 
         Material material = achievementsManager.getAchievementMaterial(achievementId, tier);
         String name = achievementsManager.getAchievementName(achievementId, tier);
-
-        // Obter a lore original e substituir os placeholders
-        List<String> lore = achievementsManager.getAchievementLore(player, achievementId, tier);
-
-        // Substituir {progress} e {status} com os valores reais
-        String status = progress >= achievementsManager.getAchievementGoal(achievementId, tier) ? "§aConcluído" : "§cIncompleto";
-        for (int i = 0; i < lore.size(); i++) {
-            lore.set(i, lore.get(i).replace("{progress}", String.valueOf(progress))
-                    .replace("{status}", status));
-        }
+        List<String> lore = achievementsManager.getAchievementLore(player, achievementId);
 
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
@@ -70,5 +61,4 @@ public class AchievementsMenu {
 
         return item;
     }
-
 }

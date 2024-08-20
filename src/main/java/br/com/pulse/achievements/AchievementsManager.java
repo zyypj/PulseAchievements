@@ -148,8 +148,24 @@ public class AchievementsManager {
         return "Desconhecido"; // Nome padrão se o tier estiver fora do intervalo
     }
 
-    public List<String> getAchievementLore(Player player, String achievementId, int tier) {
-        List<String> lore = getAchievementConfigLore(achievementId, tier);
+    // Obtém a descrição de uma conquista
+    public List<String> getAchievementLore(String type, int tier, Player player) {
+        FileConfiguration config = plugin.getConfig();
+        List<Map<?, ?>> achievements = config.getMapList("achievements." + type);
+        if (tier >= 0 && tier < achievements.size()) {
+            @SuppressWarnings("unchecked")
+            List<String> lore = (List<String>) achievements.get(tier).get("lore");
+            return lore.stream()
+                    .map(line -> line.replace("{progress}", getProgress(player, type) + "/" + achievements.get(tier).get("goal"))
+                            .replace("{status}", getProgress(player, type) >= (int) achievements.get(tier).get("goal") ? "§aFEITO!" : "§cNível bloqueado"))
+                    .toList();
+        }
+        return List.of("§cErro ao carregar a conquista.");
+    }
+
+    public List<String> getAchievementLore(Player player, String achievementId) {
+        int tier = 0; // Determine o tier correto para o achievementId
+        List<String> lore = new ArrayList<>(getAchievementConfigLore(achievementId, tier));
         int progress = getProgress(player, achievementId);
         int goal = getAchievementGoal(achievementId, tier);
 
@@ -163,7 +179,6 @@ public class AchievementsManager {
 
         return lore;
     }
-
 
     private String formatProgress(int progress, int goal) {
         return progress >= goal
@@ -193,7 +208,7 @@ public class AchievementsManager {
 
     public List<String> getAchievementConfigLore(String achievementId, int tier) {
         FileConfiguration config = plugin.getConfig();
-        return config.getStringList("achievements." + achievementId + "." + tier + ".lore");
+        return config.getStringList("achievements." + achievementId + ".tiers." + tier + ".lore");
     }
 
     public int getAchievementGoal(String achievementId, int tier) {
