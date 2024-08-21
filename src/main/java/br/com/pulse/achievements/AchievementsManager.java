@@ -1,5 +1,6 @@
 package br.com.pulse.achievements;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -9,6 +10,8 @@ import org.bukkit.entity.Player;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+
+import static org.bukkit.Bukkit.getLogger;
 
 public class AchievementsManager {
 
@@ -149,7 +152,7 @@ public class AchievementsManager {
     }
 
     // Obtém a descrição de uma conquista
-    public List<String> getAchievementLore(String type, int tier, Player player) {
+    public List<String> getAchievementLore(String type, Player player, int tier) {
         FileConfiguration config = plugin.getConfig();
         List<Map<?, ?>> achievements = config.getMapList("achievements." + type);
         if (tier >= 0 && tier < achievements.size()) {
@@ -163,11 +166,16 @@ public class AchievementsManager {
         return List.of("§cErro ao carregar a conquista.");
     }
 
-    public List<String> getAchievementLore(Player player, String achievementId) {
-        int tier = 0; // Determine o tier correto para o achievementId
-        List<String> lore = new ArrayList<>(getAchievementConfigLore(achievementId, tier));
+    public List<String> getAchievementLore(Player player, String achievementId, int tier) {
         int progress = getProgress(player, achievementId);
+        getLogger().info("progress: " + progress);
         int goal = getAchievementGoal(achievementId, tier);
+        getLogger().info("goal: " + progress);
+
+        FileConfiguration config = plugin.getConfig();
+        List<Map<?, ?>> achievements = config.getMapList("achievements." + achievementId);
+        @SuppressWarnings("unchecked")
+        List<String> lore = (List<String>) achievements.get(tier).get("lore");
 
         // Substituindo placeholders
         for (int i = 0; i < lore.size(); i++) {
@@ -206,13 +214,9 @@ public class AchievementsManager {
         return achievementsMap;
     }
 
-    public List<String> getAchievementConfigLore(String achievementId, int tier) {
-        FileConfiguration config = plugin.getConfig();
-        return config.getStringList("achievements." + achievementId + ".tiers." + tier + ".lore");
-    }
-
     public int getAchievementGoal(String achievementId, int tier) {
         FileConfiguration config = plugin.getConfig();
-        return config.getInt("achievements." + achievementId + ".tiers." + tier + ".goal");
+        List<Map<?, ?>> achievements = config.getMapList("achievements." + achievementId);
+        return (int) achievements.get(tier).get("goal");
     }
 }

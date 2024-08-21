@@ -51,7 +51,7 @@ public class AchievementsMenu {
 
         Material material = achievementsManager.getAchievementMaterial(achievementId, tier);
         String name = achievementsManager.getAchievementName(achievementId, tier);
-        List<String> lore = achievementsManager.getAchievementLore(player, achievementId);
+        List<String> lore = achievementsManager.getAchievementLore(player, achievementId, tier);
 
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();

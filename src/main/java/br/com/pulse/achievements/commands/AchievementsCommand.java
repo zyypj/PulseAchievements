@@ -18,8 +18,12 @@ public class AchievementsCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            achievementsMenu.openMenu(player);
-            return true;
+            if (player.isOp()) {
+                achievementsMenu.openMenu(player);
+                return true;
+            } else {
+                sender.sendMessage("§cComando não encontrado ou você não tem permissão!");
+            }
         }
         sender.sendMessage("Este comando só pode ser usado por jogadores.");
         return false;
