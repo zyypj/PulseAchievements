@@ -1,6 +1,5 @@
 package br.com.pulse.achievements;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -10,8 +9,6 @@ import org.bukkit.entity.Player;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-
-import static org.bukkit.Bukkit.getLogger;
 
 public class AchievementsManager {
 
@@ -168,9 +165,7 @@ public class AchievementsManager {
 
     public List<String> getAchievementLore(Player player, String achievementId, int tier) {
         int progress = getProgress(player, achievementId);
-        getLogger().info("progress: " + progress);
         int goal = getAchievementGoal(achievementId, tier);
-        getLogger().info("goal: " + progress);
 
         FileConfiguration config = plugin.getConfig();
         List<Map<?, ?>> achievements = config.getMapList("achievements." + achievementId);

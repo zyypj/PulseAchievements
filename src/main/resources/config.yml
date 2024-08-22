@@ -11,19 +11,51 @@ achievements:
         - "{status}"
     - tier: 2
       name: "Campeão Ascendente (Tier II)"
-      goal: 10
+      goal: 50
       material: GOLD_SWORD
       lore:
-        - "§7Ganhe 10 partidas."
+        - "§7Ganhe 50 partidas."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
     - tier: 3
       name: "Mestre Invicto (Tier III)"
-      goal: 100
+      goal: 200
       material: IRON_SWORD
       lore:
-        - "§7Ganhe 100 partidas."
+        - "§7Ganhe 200 partidas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  ranked_win:
+    - tier: 1
+      name: "Vitória de Estreia (Tier I)"
+      goal: 1
+      material: GOLD_BLOCK
+      lore:
+        - "§7Ganhe sua primeira partida"
+        - "&cranqueada&7."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - tier: 2
+      name: "Glória na Ranqueada (Tier II)"
+      goal: 50
+      material: EMERALD
+      lore:
+        - "§7Ganhe 50 partidas"
+        - "&cranqueadas&7."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - tier: 3
+      name: "Rei das Ranqueadas (Tier III)"
+      goal: 200
+      material: DIAMOND
+      lore:
+        - "§7Ganhe 200 partidas."
+        - "&cranqueadas&7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -40,10 +72,10 @@ achievements:
         - "{status}"
     - tier: 2
       name: "Resiliente (Tier II)"
-      goal: 10
+      goal: 50
       material: STONE_SWORD
       lore:
-        - "§7Perca 10 partidas."
+        - "§7Perca 50 partidas."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -53,6 +85,38 @@ achievements:
       material: IRON_SWORD
       lore:
         - "§7Perca 100 partidas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  ranked_defeat:
+    - tier: 1
+      name: "Derrotado Mas Não Vencido (Tier I)"
+      goal: 1
+      material: LEATHER_HELMET
+      lore:
+        - "§7Perca sua primeira partida"
+        - "&cranqueada&7."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - tier: 2
+      name: "Persistente (Tier II)"
+      goal: 50
+      material: IRON_HELMET
+      lore:
+        - "§7Perca 50 partidas"
+        - "&cranqueadas&7."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - tier: 3
+      name: "Coração Inabalável (Tier III)"
+      goal: 100
+      material: DIAMOND_HELMET
+      lore:
+        - "§7Perca 100 partidas"
+        - "&cranqueadas&7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -69,19 +133,19 @@ achievements:
         - "{status}"
     - tier: 2
       name: "Pesadelo de Camas (Tier II)"
-      goal: 10
+      goal: 100
       material: BED
       lore:
-        - "§7Destrua 10 camas."
+        - "§7Destrua 100 camas."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
     - tier: 3
       name: "Aniquilador de Sonhos (Tier III)"
-      goal: 100
+      goal: 250
       material: BED
       lore:
-        - "§7Destrua 100 camas."
+        - "§7Destrua 250 camas."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -98,19 +162,51 @@ achievements:
         - "{status}"
     - tier: 2
       name: "Veterano (Tier II)"
-      goal: 10
+      goal: 150
       material: BOOK
       lore:
-        - "§7Jogue 10 partidas."
+        - "§7Jogue 150 partidas."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
     - tier: 3
       name: "Lendário (Tier III)"
-      goal: 100
+      goal: 300
       material: BOOK
       lore:
-        - "§7Jogue 100 partidas."
+        - "§7Jogue 300 partidas."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+
+  ranked_played:
+    - tier: 1
+      name: "Subindo no Pódio (Tier I)"
+      goal: 1
+      material: COMPASS
+      lore:
+        - "§7Jogue sua primeira partida"
+        - "&cranqueada&7."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - tier: 2
+      name: "Veterano da Arena (Tier II)"
+      goal: 50
+      material: IRON_DOOR
+      lore:
+        - "§7Jogue 50 partidas"
+        - "&cranqueadas&7."
+        - ""
+        - "§7Progresso: §a{progress}"
+        - "{status}"
+    - tier: 3
+      name: "Conhecido na Comunidade (Tier III)"
+      goal: 150
+      material: BANNER_RED
+      lore:
+        - "§7Jogue 150 partidas"
+        - "&cranqueadas&7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -121,25 +217,25 @@ achievements:
       goal: 1
       material: IRON_SWORD
       lore:
-        - "§7Faça sua primeira morte."
+        - "§7Faça sua primeira kill."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
     - tier: 2
       name: "Caçador Experiente (Tier II)"
-      goal: 10
+      goal: 250
       material: GOLD_SWORD
       lore:
-        - "§7Faça 10 mortes."
+        - "§7Faça 250 kills."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
     - tier: 3
       name: "Executor Implacável (Tier III)"
-      goal: 100
+      goal: 500
       material: DIAMOND_SWORD
       lore:
-        - "§7Faça 100 mortes."
+        - "§7Faça 500 kills."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -150,25 +246,25 @@ achievements:
       goal: 1
       material: IRON_AXE
       lore:
-        - "§7Faça sua primeira morte final."
+        - "§7Faça sua primeira kill final."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
     - tier: 2
       name: "Açougueiro (Tier II)"
-      goal: 10
+      goal: 100
       material: GOLD_AXE
       lore:
-        - "§7Faça 10 mortes finais."
+        - "§7Faça 100 kills finais."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
     - tier: 3
       name: "Ceifador Supremo (Tier III)"
-      goal: 100
+      goal: 300
       material: DIAMOND_AXE
       lore:
-        - "§7Faça 100 mortes finais."
+        - "§7Faça 300 kills finais."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -185,19 +281,19 @@ achievements:
         - "{status}"
     - tier: 2
       name: "Cliente Fiel (Tier II)"
-      goal: 10
+      goal: 200
       material: GOLD_INGOT
       lore:
-        - "§7Faça 10 compras na loja."
+        - "§7Faça 200 compras na loja."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
     - tier: 3
       name: "Magnata (Tier III)"
-      goal: 100
+      goal: 1000
       material: DIAMOND
       lore:
-        - "§7Faça 100 compras na loja."
+        - "§7Faça 1000 compras na loja."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -214,10 +310,10 @@ achievements:
         - "{status}"
     - tier: 2
       name: "Especialista em Melhorias (Tier II)"
-      goal: 10
+      goal: 50
       material: ANVIL
       lore:
-        - "§7Compre 10 melhorias."
+        - "§7Compre 50 melhorias."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"

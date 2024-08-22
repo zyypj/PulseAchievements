@@ -18,5 +18,9 @@ public class PlayerFirstSpawnListener implements Listener {
     public void onPlayerFirstSpawn(PlayerFirstSpawnEvent event) {
         achievementManager.updateAchievement(event.getPlayer(), "games_played",
                 achievementManager.getProgress(event.getPlayer(), "games_played") + 1);
+        if (event.getArena().getGroup().startsWith("Ranked")) {
+            achievementManager.updateAchievement(event.getPlayer(), "ranked_played",
+                    achievementManager.getProgress(event.getPlayer(), "ranked_played") + 1);
+        }
     }
 }

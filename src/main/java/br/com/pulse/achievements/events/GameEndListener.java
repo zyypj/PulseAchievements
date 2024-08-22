@@ -19,15 +19,24 @@ public class GameEndListener implements Listener {
     @EventHandler
     public void onGameEnd(GameEndEvent event) {
         if (event.getTeamWinner() != null) {
-            event.getTeamWinner().getMembers().forEach(player ->
-                    achievementManager.updateAchievement(player, "game_win",
-                            achievementManager.getProgress(player, "game_win") + 1));
+            event.getTeamWinner().getMembers().forEach(player -> {
+                achievementManager.updateAchievement(player, "game_win",
+                        achievementManager.getProgress(player, "game_win") + 1);
+                if (event.getArena().getGroup().startsWith("Ranked")) {
+                    achievementManager.updateAchievement(player, "ranked_win",
+                            achievementManager.getProgress(player, "ranked_win") + 1);
+                }
+            });
         }
         event.getLosers().forEach(uuid -> {
             Player player = Bukkit.getPlayer(uuid);
             if (player != null) {
                 achievementManager.updateAchievement(player, "game_defeat",
                         achievementManager.getProgress(player, "game_defeat") + 1);
+                if (event.getArena().getGroup().startsWith("Ranked")) {
+                    achievementManager.updateAchievement(player, "ranked_win",
+                            achievementManager.getProgress(player, "ranked_win") + 1);
+                }
             }
         });
     }
