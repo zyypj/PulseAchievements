@@ -19,7 +19,7 @@ public class AchievementsCommand implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (player.isOp()) {
-                achievementsMenu.openMenu(player);
+                achievementsMenu.openMenu(player, 1);
                 return true;
             } else {
                 sender.sendMessage("§cComando não encontrado ou você não tem permissão!");

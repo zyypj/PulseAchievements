@@ -35,7 +35,7 @@ achievements:
       material: GOLD_BLOCK
       lore:
         - "§7Ganhe sua primeira partida"
-        - "&cranqueada&7."
+        - "§cranqueada§7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -45,7 +45,7 @@ achievements:
       material: EMERALD
       lore:
         - "§7Ganhe 50 partidas"
-        - "&cranqueadas&7."
+        - "§cranqueadas§7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -55,7 +55,7 @@ achievements:
       material: DIAMOND
       lore:
         - "§7Ganhe 200 partidas."
-        - "&cranqueadas&7."
+        - "§cranqueadas§7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -96,7 +96,7 @@ achievements:
       material: LEATHER_HELMET
       lore:
         - "§7Perca sua primeira partida"
-        - "&cranqueada&7."
+        - "§cranqueada§7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -106,7 +106,7 @@ achievements:
       material: IRON_HELMET
       lore:
         - "§7Perca 50 partidas"
-        - "&cranqueadas&7."
+        - "§cranqueadas§7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -116,7 +116,7 @@ achievements:
       material: DIAMOND_HELMET
       lore:
         - "§7Perca 100 partidas"
-        - "&cranqueadas&7."
+        - "§cranqueadas§7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -186,7 +186,7 @@ achievements:
       material: COMPASS
       lore:
         - "§7Jogue sua primeira partida"
-        - "&cranqueada&7."
+        - "§cranqueada§7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -196,7 +196,7 @@ achievements:
       material: IRON_DOOR
       lore:
         - "§7Jogue 50 partidas"
-        - "&cranqueadas&7."
+        - "§cranqueadas§7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"
@@ -206,7 +206,7 @@ achievements:
       material: BANNER_RED
       lore:
         - "§7Jogue 150 partidas"
-        - "&cranqueadas&7."
+        - "§cranqueadas§7."
         - ""
         - "§7Progresso: §a{progress}"
         - "{status}"

@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+import static org.bukkit.Bukkit.getLogger;
+
 public class AchievementsManager {
 
     private final PulseAchievements plugin;
@@ -64,7 +66,7 @@ public class AchievementsManager {
         }
     }
 
-    // Atualiza o progresso de uma conquista
+    // Atualiza o progresso de uma conquista e recarrega o menu
     public void updateAchievement(Player player, String type, int progress) {
         UUID uuid = player.getUniqueId();
         Map<String, Integer> achievements = playerAchievements.getOrDefault(uuid, new HashMap<>());
@@ -82,12 +84,16 @@ public class AchievementsManager {
         playerAchievements.put(uuid, achievements);
         saveDatabase();
 
-        // Verifica se a conquista foi completada
-        checkForCompletion(player, type, progress);
+        // Verifica se a conquista foi completada e desbloqueia o próximo tier
+        unlockNextTier(player, type, progress);
+
+        loadDatabase();
+
+        // Recarrega o menu de conquistas para refletir as mudanças
+        plugin.getAchievementsMenu().openMenu(player,1);
     }
 
-    // Verifica se uma conquista foi completada
-    private void checkForCompletion(Player player, String type, int progress) {
+    private void unlockNextTier(Player player, String type, int progress) {
         FileConfiguration config = plugin.getConfig();
         List<Map<?, ?>> achievements = config.getMapList("achievements." + type);
 
@@ -100,18 +106,19 @@ public class AchievementsManager {
                 String name = (String) achievementConfig.get("name");
                 player.sendMessage("§aVocê completou a conquista: " + name + "!");
 
-                // Verifica se existe uma próxima conquista do mesmo tipo
+                // Verifica se existe uma próxima conquista do mesmo tipo (próximo tier)
                 if (i + 1 < achievements.size()) {
                     Map<?, ?> nextAchievementConfig = achievements.get(i + 1);
                     String nextName = (String) nextAchievementConfig.get("name");
-                    player.sendMessage("§ePróxima conquista: " + nextName);
+                    player.sendMessage("§ePróxima conquista desbloqueada: " + nextName);
+
+                    // Desbloqueia o próximo tier sem alterar o progresso
+                    playerAchievements.get(player.getUniqueId()).put(type, progress);  // Armazena o progresso atual
+                    saveDatabase();
                 } else {
                     player.sendMessage("§aVocê completou todas as conquistas deste tipo!");
                 }
 
-                // Atualiza o banco de dados
-                playerAchievements.get(player.getUniqueId()).put(type, progress);
-                saveDatabase();
                 return;
             }
         }
@@ -119,7 +126,9 @@ public class AchievementsManager {
 
     // Obtém o progresso atual de uma conquista
     public int getProgress(Player player, String type) {
-        return playerAchievements.getOrDefault(player.getUniqueId(), new HashMap<>()).getOrDefault(type, 0);
+        int progress = playerAchievements.getOrDefault(player.getUniqueId(), new HashMap<>()).getOrDefault(type, 0);
+        getLogger().info("Type: " + type + " Progress: " + progress);
+        return progress;
     }
 
     // Obtém o material configurado para uma conquista
@@ -149,20 +158,6 @@ public class AchievementsManager {
     }
 
     // Obtém a descrição de uma conquista
-    public List<String> getAchievementLore(String type, Player player, int tier) {
-        FileConfiguration config = plugin.getConfig();
-        List<Map<?, ?>> achievements = config.getMapList("achievements." + type);
-        if (tier >= 0 && tier < achievements.size()) {
-            @SuppressWarnings("unchecked")
-            List<String> lore = (List<String>) achievements.get(tier).get("lore");
-            return lore.stream()
-                    .map(line -> line.replace("{progress}", getProgress(player, type) + "/" + achievements.get(tier).get("goal"))
-                            .replace("{status}", getProgress(player, type) >= (int) achievements.get(tier).get("goal") ? "§aFEITO!" : "§cNível bloqueado"))
-                    .toList();
-        }
-        return List.of("§cErro ao carregar a conquista.");
-    }
-
     public List<String> getAchievementLore(Player player, String achievementId, int tier) {
         int progress = getProgress(player, achievementId);
         int goal = getAchievementGoal(achievementId, tier);

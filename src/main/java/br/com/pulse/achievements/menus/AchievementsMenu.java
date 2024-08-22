@@ -19,48 +19,91 @@ import java.util.Map;
 public class AchievementsMenu {
 
     private final AchievementsManager achievementsManager;
+    private static final int[] SLOTS = {10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42};
+    private static final int MENU_SIZE = 54;
+    private static final int NEXT_PAGE_SLOT = MENU_SIZE - 1;  // Último slot do inventário
+    private static final int PREVIOUS_PAGE_SLOT = 45;  // Primeiro slot da segunda linha
 
     public AchievementsMenu(AchievementsManager achievementsManager) {
         this.achievementsManager = achievementsManager;
     }
 
-    public void openMenu(Player player) {
-        Inventory menu = Bukkit.createInventory(null, 54, "Conquistas do Bed Wars");
+    public void openMenu(Player player, int page) {
+        Inventory menu = Bukkit.createInventory(null, MENU_SIZE, "Conquistas do Bed Wars");
 
-        // Definindo slots específicos para as conquistas
-        int[] slots = {10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43};
+        // Obtem os itens das conquistas baseados na página e tier desbloqueado
+        List<ItemStack> items = getAchievementItems(player);
 
-        List<ItemStack> completedItems = new ArrayList<>();
-        List<ItemStack> pendingItems = new ArrayList<>();
+        // Calcula o índice de início e fim para a página atual
+        int start = (page - 1) * SLOTS.length;
+        int end = Math.min(start + SLOTS.length, items.size());
 
-        for (String achievementId : achievementsManager.getAchievements().keySet()) {
-            Map<String, Object> tiers = achievementsManager.getAchievements().get(achievementId);
-            for (int tier = 0; tier < tiers.size(); tier++) {
-                ItemStack item = createAchievementItem(player, achievementId, tier);
-                if (achievementsManager.getProgress(player, achievementId) >= achievementsManager.getAchievementGoal(achievementId, tier)) {
-                    // Tier completado
-                    completedItems.add(item);
-                } else {
-                    // Tier não completado
-                    pendingItems.add(item);
-                }
-            }
+        // Adiciona os itens da página ao menu
+        for (int i = start; i < end; i++) {
+            menu.setItem(SLOTS[i - start], items.get(i));
         }
 
-        // Colocando os itens completados no início da lista
-        Collections.reverse(completedItems); // Inverte a ordem para que o Tier I fique antes do Tier II, etc.
-        List<ItemStack> allItems = new ArrayList<>(completedItems);
-        allItems.addAll(pendingItems);
+        // Adiciona a seta de navegação se houver mais páginas
+        if (end < items.size()) {
+            menu.setItem(NEXT_PAGE_SLOT, createNavigationItem("Próxima Página", Material.ARROW));
+        }
 
-        for (int i = 0; i < allItems.size() && i < slots.length; i++) {
-            menu.setItem(slots[i], allItems.get(i));
+        if (page > 1) {
+            menu.setItem(PREVIOUS_PAGE_SLOT, createNavigationItem("Página Anterior", Material.ARROW));
         }
 
         player.openInventory(menu);
     }
 
+    private ItemStack createNavigationItem(String name, Material material) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.GREEN + name);
+        item.setItemMeta(meta);
+        return item;
+    }
+
+    private List<ItemStack> getAchievementItems(Player player) {
+        List<ItemStack> items = new ArrayList<>();
+
+        for (String achievementId : achievementsManager.getAchievements().keySet()) {
+            Map<String, Object> tiers = achievementsManager.getAchievements().get(achievementId);
+            int maxTierUnlocked = getMaxTierUnlocked(player, achievementId);
+
+            // Adiciona o tier atual e os anteriores completados
+            for (int tier = 0; tier <= maxTierUnlocked; tier++) {
+                ItemStack item = createAchievementItem(player, achievementId, tier);
+                items.add(item);
+            }
+
+            // Adiciona o próximo tier desbloqueável, se existir
+            if (maxTierUnlocked + 1 < tiers.size()) {
+                ItemStack nextTierItem = createAchievementItem(player, achievementId, maxTierUnlocked + 1);
+                items.add(nextTierItem);
+            }
+        }
+
+        return items;
+    }
+
+    private int getMaxTierUnlocked(Player player, String achievementId) {
+        int progress = achievementsManager.getProgress(player, achievementId);
+        int maxTierUnlocked = 0;
+
+        // Itera sobre os tiers para encontrar o máximo desbloqueado
+        for (int tier = 0; tier < achievementsManager.getAchievements().get(achievementId).size(); tier++) {
+            int goal = achievementsManager.getAchievementGoal(achievementId, tier);
+            if (progress >= goal) {
+                maxTierUnlocked = tier;
+            } else {
+                break;
+            }
+        }
+
+        return maxTierUnlocked;
+    }
+
     private ItemStack createAchievementItem(Player player, String achievementId, int tier) {
-        // Obtém o progresso atual do jogador para a conquista
         int progress = achievementsManager.getProgress(player, achievementId);
         int goal = achievementsManager.getAchievementGoal(achievementId, tier);
 
@@ -73,7 +116,6 @@ public class AchievementsMenu {
         meta.setDisplayName(ChatColor.GREEN + name);
         meta.setLore(lore);
 
-        // Encanta o item se o tier foi completado
         if (progress >= goal) {
             meta.addEnchant(Enchantment.LURE, 1, true);
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);

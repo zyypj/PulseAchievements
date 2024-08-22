@@ -9,14 +9,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PulseAchievements extends JavaPlugin {
 
     private AchievementsManager achievementManager;
+    private AchievementsMenu achievementsMenu;
 
     @Override
     public void onEnable() {
         // Carregar configuração e inicializar sistema de conquistas
         saveDefaultConfig();
         achievementManager = new AchievementsManager(this);
-        AchievementsMenu achievementsMenu = new AchievementsMenu(achievementManager);
-        getServer().getPluginManager().registerEvents(new MenuListener(), this);
+        achievementsMenu = new AchievementsMenu(achievementManager);
+        getServer().getPluginManager().registerEvents(new MenuListener(achievementsMenu), this);
 
         // Registrar eventos de conquistas
         getServer().getPluginManager().registerEvents(new GameEndListener(this), this);
@@ -31,5 +32,9 @@ public class PulseAchievements extends JavaPlugin {
 
     public AchievementsManager getAchievementManager() {
         return achievementManager;
+    }
+
+    public AchievementsMenu getAchievementsMenu() {
+        return achievementsMenu;
     }
 }
